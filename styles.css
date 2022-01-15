@@ -250,6 +250,11 @@ body{
     text-align: center;
     left: 5px;
     font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.alert-msg:hover{
+    transform: scale(1.01, 1.01);
 }
 
 
