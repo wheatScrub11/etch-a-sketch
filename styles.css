@@ -1,0 +1,337 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Shadows+Into+Light&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Acme&family=Poppins:wght@400;700&family=Shadows+Into+Light&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Acme;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+    background-image: linear-gradient(to right, #2b0033, #001c33);
+}
+
+#title{
+    width: 900px;
+    text-align: center;
+    font-size: 5rem;
+    background-color: #ffffff7c;
+}
+
+#main-box{
+    height: 600px;
+    width: 900px;
+    background-color: #ffffff13;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    gap: 10px;
+    padding: 2em 0em 1em 0;
+    position: relative;
+}
+
+.a{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5em;
+}
+
+#howManyBox{
+    grid-column: 1 / 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    flex-direction: column;
+}
+#howmanysquares{
+    width: 80%;
+    height: 40px;
+    font-size: 1.4rem;
+    text-align: center;
+    
+    top: 0;
+    margin-bottom: .2em;
+}
+#send-btn{
+    height: 40px;
+    width: 20%;
+    font-size: 1.2rem;
+    cursor: pointer;
+    
+    top: 45%;
+}
+/*______________________*/
+.select-color{
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+    cursor: pointer;
+}
+
+.raimbow-color{
+    grid-column: 1 / 2;
+    grid-row: 3 / 4;
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+.raimbow{
+    z-index: 3;
+    color: black;
+    position: absolute;
+    text-align: center;
+    inset: 30px 0 0 0;
+}
+.raimbow-color::before{
+    content: "";
+    width: 150%;
+    height: 150%;
+    position: absolute;
+    inset: -25px 0px 0px -20px;
+    background: linear-gradient(to right, rgb(255, 0, 0), rgb(0, 128, 0), rgb(0, 0, 255));
+    z-index: 0;
+    animation: raimbow-an 2s infinite linear both;
+}
+.raimbow-color::after{
+    content: "";
+    position: absolute;
+    z-index: 1;
+    background-color: #fbfbfaa4;
+    inset: 5px;
+}
+@keyframes raimbow-an{
+    0%{
+        transform: rotateZ(0deg);
+    }
+    100%{
+        transform: rotateZ(360deg);
+    }
+}
+
+
+.gray-color{
+    grid-column: 1 / 2;
+    grid-row: 4 / 5;
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+.gray{
+    z-index: 3;
+    color: black;
+    position: absolute;
+    text-align: center;
+    inset: 30px 0 0 0;
+    color: white;
+}
+.gray-color::before{
+    content: "";
+    width: 150%;
+    height: 200%;
+    position: absolute;
+    inset: -25px 0px 0px -20px;
+    background: linear-gradient(black,#000000, #6e6e6e,#000000, #000000);
+    z-index: 0;
+    animation: gray-an 1s infinite linear forwards alternate;
+}
+.gray-color::after{
+    content: "";
+    position: absolute;
+    z-index: 1;
+    background-image: linear-gradient(to right, #a0a0a0ef, #1a1a1aec);
+    inset: 5px;
+}
+@keyframes gray-an{
+    0%{
+        transform: translateY(-60px);
+    }
+    100%{
+        transform: translateY(20px);
+    }
+}
+
+.a{
+    transition: all 100ms linear;
+}
+.a:hover{
+    box-shadow: 1px 1px 30px #ffffff85;
+    transform: scale(1.1)
+}
+
+.bb{
+    box-shadow: 1px 1px 30px #ffffff85;
+    transform: scale(1.1)
+}
+
+.anim1{
+    transition: all 100ms linear;
+    transform: scale(1.1);
+    border: 5px solid black;
+}
+
+
+
+
+#erase-btn{
+    grid-column: 1 / 2;
+    grid-row: 5 / 6;
+    width: 80%;
+    height: max-content;
+    font-size: 2rem;
+    margin: auto;
+    cursor: pointer;
+    margin: auto auto 0 auto;
+}
+#actually-grid{
+    grid-column: 2 / 4;
+    grid-row: 1 / 6;
+    width: 553.60px;
+    height: 553.60px;
+    margin: auto auto auto 0;
+    background-color: #ffffff;
+    display: grid;
+    grid-template-columns: repeat(16, 1fr);
+    grid-template-rows: repeat(16, 1fr);
+    border: 6px solid rgb(0, 0, 0);
+}
+
+
+.green-border{
+    background-color: white;
+    border: 3px solid #98e624;
+    height:calc(100% - 60px);
+    width:40px;
+    position:absolute;
+    top: 8px;
+    right:-5px;
+    color: #98e624;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6rem;
+}
+.red-border{
+    background-color: white;
+    border: 1px solid #e62424;
+    height:calc(100% + 4px);
+    width:40px;
+    position:absolute;
+    top:-2px;
+    right:-50px;
+    color: #e62424;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.alert-msg{
+    width: 300px;
+    height: 100px;
+    border: 5px solid red;
+    background-color: white;
+    z-index: 3;
+    position: absolute;
+    text-align: center;
+    left: 5px;
+    font-size: 1.5rem;
+}
+
+
+.z2{
+    background-color: rebeccapurple;
+}
+
+.cuadri{
+    border: .01px solid rgba(49, 49, 49, 0.418);
+}
+
+
+.zzz1{
+    height:100%;
+    width:100%;
+    position:relative;
+    overflow:hidden;
+}
+
+.NIT{
+    background-color: #00000010;
+    height:100%;
+    width:100%;
+    position:absolute;
+}
+
+.showGridStyle{
+    width:235px;
+    height:40px;
+    background-color:#D29479;
+    position:absolute;
+    bottom:80px;
+    left:29.45px;
+    text-align:center;
+    font-size:1.9rem;
+    line-height:1.36;
+    cursor:pointer;
+}
+
+.prueba{
+    border: .1px solid black;
+}
+
+.tutorial-msg{
+    position: absolute;
+    animation: themsg 1200ms ease-in-out forwards reverse;
+    animation-play-state: running;
+    animation-iteration-count: 1;
+    width: 400px;
+    height: 280px;
+    background-color: #312828;
+    color: white;
+    font-size: 2rem;
+    text-align: center;
+    
+    border: 3px solid red;
+    border-radius: .3em;
+    transform: translateY(-40px);
+    padding: 15px 15px 25px 10px;
+
+
+}
+
+@keyframes themsg{
+    0%{
+        opacity: 100%;
+
+    }100%{
+        opacity: 0;
+        transform: translateY(200px);
+    }
+}
+
+footer{
+    background-color: #ffffff13;
+    width: 900px;
+    display: flex;
+    justify-content: center;
+    color: white;
+    font-size: 1.2rem;
+    height: 40px;
+}
+.tsvg{
+    margin-left: .5em;
+}
