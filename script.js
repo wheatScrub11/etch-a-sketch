@@ -43,7 +43,7 @@ okBtn.addEventListener("click", e =>{
         tutorial.textContent = "";
     })
     tutorial.style.cssText = "width:560px;height:280px;"
-    tutorial.textContent = "Press 'Z' to temporarily disable the pencil.     Press 'X' to select input color mode.    Press 'C' to select layers of gray mode. Press 'V' to select random color mode. Press 'rightclick' to delete a color from the grid"
+    tutorial.textContent = "     Press 'Z' to select input color mode.    Press 'X' to temporarily disable the pencil. Press 'C' to select layers of gray mode. Press 'V' to select random color mode. Press 'rightclick' to delete a color from the grid"
     theBody.appendChild(tutorial)
 
 }, {once:true})
@@ -150,8 +150,8 @@ okBtn.addEventListener("click", e =>{
                         coco = e.key.toLowerCase()
                     })
         
-                    if (coco == "z"){holder = 3;}
-                    else if (coco == "x"){holder = 0;}
+                    if (coco == "z"){holder = 0;}
+                    else if (coco == "x"){holder = 3;}
                     else if (coco == "c"){holder = 2;}
                     else if (coco == "v"){holder = 1;}
                     comparison(i) //
