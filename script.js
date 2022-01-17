@@ -9,9 +9,12 @@ let okBtn = document.getElementById("send-btn")
     , ttt = document.querySelectorAll(".a")
     , holder = 0
     , holder1 = 0
+    , holder3 = 0
+    , theh1 = document.querySelector("h1")
     , colorInput = "black";
     
-let moreBoxes, rawww, allBoxes, newGrayBox, allgrayboxes, tutorial;
+let moreBoxes, rawww, allBoxes, newGrayBox, allgrayboxes, tutorial, coco;
+
 setTimeout(() => {
     tutorial = document.createElement("div");
     tutorial.classList.add("tutorial-msg");
@@ -30,7 +33,25 @@ colorBtn.addEventListener("input", e =>{
     holder = 0;
 })
 
+/*The msg*/
 okBtn.addEventListener("click", e =>{
+    /*The tutorial box of how to use the keyboard shortcuts*/
+    tutorial = document.createElement("div");
+    tutorial.classList.add("tutorial-msg");
+    tutorial.addEventListener("click", () =>{
+        tutorial.classList.remove("tutorial-msg");
+        theBody.removeChild(tutorial)
+        tutorial.textContent = "";
+    })
+    tutorial.style.cssText = "width:510px;height:280px;"
+    tutorial.textContent = "Press 'A' to select input color mode. Press 'S' to select random color mode. Press 'D' to select layers of gray mode. Press 'F' to temporarily disable the pencil. Press 'rightclick' to delete a color from the grid"
+    theBody.appendChild(tutorial)
+
+}, {once:true})
+
+/*The Ok btn*/
+okBtn.addEventListener("click", e =>{
+    hidethem();
     let gridImputValue = gridImput.value;
     let checkmark = document.createElement("div")
 
@@ -80,27 +101,63 @@ okBtn.addEventListener("click", e =>{
             for(let i = 0; i < rawww; ++i){
                 allBoxes[i].style.cssText = "background-color:white;"
             }
-            
-            /* The three mode of colors switching between each other*/
-            for(let i = 0; i < rawww; ++i){
-                allBoxes[i].addEventListener("mouseover", () =>{
-
-                    if (holder == 0){
-                        allBoxes[i].style.cssText = `background-color:${colorInput};`
-                    }else if(holder == 1){
-                        let asd = theRGBA();
-                        allBoxes[i].style.cssText = `background-color:${asd};`
-                    }else if(holder == 2){
-                        allBoxes[i].addEventListener("click", e =>{
-                            newGrayBox = document.createElement("div");
-                            newGrayBox.classList.add("allof")
-                            newGrayBox.classList.add("NIT");
-                            allBoxes[i].appendChild(newGrayBox);
-                        },{once:true})
-                    }
-                    allgrayboxes = document.querySelectorAll(".allof")
-                }) 
+            /*color style n1*/
+            const firstbtn = function(c){
+                allBoxes[c].style.cssText = `background-color:${colorInput};`
             }
+            /*color style n2 (random)*/
+            const secondbtn = function(c){
+                let asd = theRGBA();
+                allBoxes[c].style.cssText = `background-color:${asd};`
+            }
+            /*color style n3 (layers of gray)*/
+            const thirdbtn = function(c){
+                allBoxes[c].addEventListener("click", e =>{
+                    newGrayBox = document.createElement("div");
+                    newGrayBox.classList.add("allof")
+                    newGrayBox.classList.add("NIT");
+                    allBoxes[c].appendChild(newGrayBox);
+                },{once:true})
+            }
+            /*Stops the pencil color function*/
+            const fourbtn = function(){} 
+            /*Erase function that replaces the color of the boxes and delete the gray boxes*/
+            const fivebtn = function(c){
+                allBoxes[c].addEventListener("contextmenu", e =>{
+                    e.preventDefault();
+                    e.target.style.backgroundColor = "white";
+                    allBoxes[i].removeChild(newGrayBox)
+                })
+            }
+            /* The three mode of colors switching between each other*/
+            const comparison = function(i){
+                actuallyGrid.addEventListener("contextmenu", e =>{
+                    e.preventDefault();
+                    fivebtn(i)
+                })
+                if (holder == 0){firstbtn(i)}
+                else if(holder == 1){secondbtn(i)}
+                else if(holder == 2){thirdbtn(i)}
+                else if(holder == 3){fourbtn(i)}
+                
+                allgrayboxes = document.querySelectorAll(".allof")
+            }
+            /*Add the event listener for each box of the grid*/
+            for(let i = 0; i < rawww; ++i){
+                allBoxes[i].addEventListener("mouseover", e =>{
+                    /*take the input of the pressed key and then compare them and choose a color mode*/
+                    window.addEventListener("keydown", e =>{
+                        coco = e.key.toLowerCase()
+                    })
+        
+                    if (coco == "a"){holder = 0;}
+                    else if (coco == "s"){holder = 1;}
+                    else if (coco == "d"){holder = 2;}
+                    else if (coco == "f"){holder = 3;}
+                    comparison(i) //
+                })
+            }
+
             /*The actually "Erase" btn working, i decided to put it here*/
             for(let i = 0; i < rawww; ++i){
 
@@ -111,7 +168,6 @@ okBtn.addEventListener("click", e =>{
                     }
                 })
             }
-            console.log(rawww)
         }
     }, 0);
 })
@@ -134,8 +190,8 @@ const theRGBA = function(){
     let a = computerChoose();
     let outpout = `rgba(${r}, ${g}, ${b}, ${a})`
     holder = 1;
+    coco = 1;
     return outpout;
-    
 }
 
 /* The random btn */
@@ -145,6 +201,7 @@ raimbowBtn.addEventListener("click", theRGBA)
 const scaleGray = function(){
     let outpout = "#00000005"
     holder = 2;
+    coco = 2;
     return outpout;
 }
 
