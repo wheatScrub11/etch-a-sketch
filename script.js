@@ -43,7 +43,7 @@ okBtn.addEventListener("click", e =>{
         tutorial.textContent = "";
     })
     tutorial.style.cssText = "width:560px;height:280px;"
-    tutorial.textContent = "Press 'Z' to temporarily disable the pencil.     Press 'X' to select input color mode.    Press 'V' to select random color mode. Press 'C' to select layers of gray mode. Press 'rightclick' to delete a color from the grid"
+    tutorial.textContent = "Press 'Z' to temporarily disable the pencil.     Press 'X' to select input color mode.    Press 'C' to select layers of gray mode. Press 'V' to select random color mode. Press 'rightclick' to delete a color from the grid"
     theBody.appendChild(tutorial)
 
 }, {once:true})
