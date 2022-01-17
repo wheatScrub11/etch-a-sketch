@@ -7,7 +7,7 @@ let okBtn = document.getElementById("send-btn")
     , actuallyGrid = document.getElementById("actually-grid")
     , theBody = document.querySelector("body")
     , ttt = document.querySelectorAll(".a")
-    , holder = 0
+    , holder = 3
     , holder1 = 0
     , holder3 = 0
     , theh1 = document.querySelector("h1")
@@ -30,7 +30,6 @@ setTimeout(() => {
 colorBtn.addEventListener("input", e =>{
     let color = colorBtn.value;
     colorInput = color;
-    holder = 0;
 })
 
 /*The msg*/
@@ -52,6 +51,7 @@ okBtn.addEventListener("click", e =>{
 /*The Ok btn*/
 okBtn.addEventListener("click", e =>{
     hidethem();
+    holder1 = 0;
     let gridImputValue = gridImput.value;
     let checkmark = document.createElement("div")
 
