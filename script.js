@@ -126,7 +126,7 @@ okBtn.addEventListener("click", e =>{
                 allBoxes[c].addEventListener("contextmenu", e =>{
                     e.preventDefault();
                     e.target.style.backgroundColor = "white";
-                    allBoxes[i].removeChild(newGrayBox)
+                    allBoxes[c].removeChild(newGrayBox)
                 })
             }
             /* The three mode of colors switching between each other*/
